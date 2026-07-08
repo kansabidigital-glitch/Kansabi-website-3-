@@ -1,0 +1,13 @@
+.DS_Store
+*.pem
+
+# Legacy static prototype (superseded by web/)
+/css/
+/js/
+/index.html
+
+# Next.js app
+web/node_modules/
+web/.next/
+web/.env.local
+web/.vercel
