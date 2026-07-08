@@ -1,5 +1,7 @@
 import { PageHeader, ModuleCard, StatusBadge } from "@/components/dashboard/ui";
 
+export const dynamic = "force-dynamic";
+
 async function checkDatabase() {
   if (!process.env.DATABASE_URL) {
     return { ok: false, message: "DATABASE_URL not configured" };

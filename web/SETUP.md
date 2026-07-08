@@ -66,7 +66,9 @@ git push -u origin main
    - `NEXT_PUBLIC_SITE_URL` → `https://your-domain.vercel.app`
    - `DASHBOARD_ACCESS_KEY`
 
-4. Deploy — build komutu otomatik: `npm run ci` (migrate + build)
+4. Deploy — build komutu: `npm run build`
+
+> **Not:** `payload migrate` Vercel build'de çalıştırılmaz (Node 22 ESM uyumsuzluğu). Schema değişikliklerinde lokal olarak `npm run migrate` çalıştır (Neon `DATABASE_URL` ile).
 
 ## Güvenlik
 

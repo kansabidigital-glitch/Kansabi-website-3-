@@ -6,6 +6,8 @@ import {
 } from "@/components/dashboard/ui";
 import { ExternalLink } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 async function checkDatabase() {
   if (!process.env.DATABASE_URL) return false;
   try {
