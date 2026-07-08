@@ -13,6 +13,17 @@ GitHub  →  Vercel  →  Next.js App
 Neon PostgreSQL  ←  Payload CMS (Pages, Blog, Media, Site Settings)
 ```
 
+## Git author (Vercel için zorunlu)
+
+Commit email'in GitHub hesabınla eşleşmeli. Terminalde **bir kez** çalıştır:
+
+```bash
+git config user.email "kansabi.digital@gmail.com"
+git config user.name "Turker Alper TULAY"
+```
+
+(`--global` eklersen tüm projelerde geçerli olur.)
+
 ## 1. Neon DB
 
 1. [console.neon.tech](https://console.neon.tech) → yeni proje oluştur
