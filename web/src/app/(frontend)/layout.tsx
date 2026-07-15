@@ -5,6 +5,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { GoogleTagManager } from "@/components/analytics/gtm";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // ISR — static pages refresh hourly (applies to every frontend route).
 export const revalidate = 3600;
@@ -27,6 +29,9 @@ export default function FrontendLayout({
       {children}
       <Footer />
       <ConsentBanner />
+      {/* Vercel Analytics + Speed Insights — cookieless, no consent gating needed */}
+      <Analytics />
+      <SpeedInsights />
     </RootHtml>
   );
 }
