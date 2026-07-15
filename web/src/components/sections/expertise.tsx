@@ -1,11 +1,12 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { expertise } from "@/data/site-content";
 import { FadeIn, TextReveal } from "@/components/ui/text-reveal";
 
 export function ExpertiseSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section id="expertise" className="scroll-mt-24 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn>
           <p className="label">Our Expertise</p>
@@ -28,16 +29,35 @@ export function ExpertiseSection() {
                   {col.pillar}
                 </h3>
                 <ul className="mt-5 space-y-5">
-                  {col.items.map((item) => (
-                    <li key={item.title}>
-                      <p className="text-sm font-medium text-soft-black">
-                        {item.title}
-                      </p>
-                      <p className="mt-0.5 text-sm leading-relaxed text-fog">
-                        {item.desc}
-                      </p>
-                    </li>
-                  ))}
+                  {col.items.map((item) =>
+                    item.href ? (
+                      <li key={item.title}>
+                        <a href={item.href} className="group flex items-start justify-between gap-2">
+                          <span>
+                            <span className="flex items-center gap-1.5 text-sm font-medium text-soft-black transition-colors group-hover:text-accent">
+                              {item.title}
+                              <ArrowUpRight
+                                size={13}
+                                className="-translate-x-0.5 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                              />
+                            </span>
+                            <span className="mt-0.5 block text-sm leading-relaxed text-fog">
+                              {item.desc}
+                            </span>
+                          </span>
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={item.title}>
+                        <p className="text-sm font-medium text-stone-gray">
+                          {item.title}
+                        </p>
+                        <p className="mt-0.5 text-sm leading-relaxed text-fog">
+                          {item.desc}
+                        </p>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </FadeIn>

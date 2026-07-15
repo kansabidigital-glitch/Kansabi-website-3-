@@ -1,24 +1,20 @@
 import Link from "next/link";
 import {
-  BarChart3,
-  Database,
-  FileText,
   Globe,
+  Inbox,
   LayoutDashboard,
-  Megaphone,
   Search,
   Settings,
   ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Launch sidebar: only modules backed by real first-party data.
+// GA4 / Ads panels return in their own faz once actually connected.
 const navItems = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
-  { href: "/dashboard/content", label: "Content", icon: FileText },
-  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/dashboard/ads", label: "Ads", icon: Megaphone },
-  { href: "/dashboard/seo", label: "SEO", icon: Search },
-  { href: "/dashboard/infrastructure", label: "Infrastructure", icon: Database },
+  { href: "/dashboard/leads", label: "Leads", icon: Inbox },
+  { href: "/dashboard/seo", label: "SEO & GEO", icon: Search },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 

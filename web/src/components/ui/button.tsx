@@ -1,9 +1,14 @@
 import { cn } from "@/lib/utils";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "onClick"
+> & {
   variant?: "primary" | "secondary" | "ghost";
   size?: "default" | "lg";
   href?: string;
+  // Shared between <a> and <button> renders, so the element type stays broad.
+  onClick?: React.MouseEventHandler<HTMLElement>;
 };
 
 export function Button({
@@ -12,6 +17,7 @@ export function Button({
   size = "default",
   href,
   children,
+  onClick,
   ...props
 }: ButtonProps) {
   const classes = cn(
@@ -20,7 +26,7 @@ export function Button({
     variant === "primary" &&
       "bg-soft-black text-pure hover:bg-muted-charcoal shadow-sm",
     variant === "secondary" &&
-      "bg-pure text-soft-black border border-cloud hover:border-fog hover:shadow-sm",
+      "bg-pure text-soft-black border border-cloud hover:border-accent/50 hover:text-accent hover:shadow-sm",
     variant === "ghost" &&
       "text-stone-gray hover:text-soft-black hover:bg-pure/60",
     size === "default" && "px-5 py-2.5 text-sm",
@@ -30,14 +36,18 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a
+        href={href}
+        className={classes}
+        onClick={onClick}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );

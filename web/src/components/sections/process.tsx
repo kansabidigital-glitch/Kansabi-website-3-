@@ -12,15 +12,15 @@ export function ProcessSection() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn>
-          <p className="label">Your Journey</p>
+          <p className="label">Your First 90 Days</p>
         </FadeIn>
         <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-light leading-tight tracking-[-0.01em] text-soft-black">
-          <TextReveal text="Up and running within weeks" />
+          <TextReveal text="From kickoff to compounding growth" />
         </h2>
         <FadeIn delay={0.15}>
           <p className="mt-5 max-w-xl text-lg text-zen-accent">
-            No fancy frameworks. A clear picture of what your first 90 days look
-            like.
+            No fancy frameworks. A clear picture of what Sprint, Build and
+            Retainer actually look like week by week.
           </p>
         </FadeIn>
 

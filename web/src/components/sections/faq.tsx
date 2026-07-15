@@ -35,8 +35,8 @@ export function FaqSection() {
                   <Plus
                     size={18}
                     className={cn(
-                      "shrink-0 text-fog transition-transform duration-300",
-                      open === i && "rotate-45"
+                      "shrink-0 text-fog transition-all duration-300",
+                      open === i && "rotate-45 text-accent"
                     )}
                   />
                 </button>

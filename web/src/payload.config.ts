@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 
 import { BlogPosts } from "./collections/BlogPosts";
+import { Leads } from "./collections/Leads";
 import { Media } from "./collections/Media";
 import { Pages } from "./collections/Pages";
 import { Users } from "./collections/Users";
@@ -24,7 +25,7 @@ export default buildConfig({
       titleSuffix: "— Kansabi CMS",
     },
   },
-  collections: [Users, Media, Pages, BlogPosts],
+  collections: [Users, Media, Pages, BlogPosts, Leads],
   globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",

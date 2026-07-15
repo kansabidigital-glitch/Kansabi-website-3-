@@ -1,60 +1,39 @@
 import { cn } from "@/lib/utils";
+import { LEAD_STATUS_LABEL, type LeadStatus } from "@/lib/leads";
 
-type Status = "connected" | "pending" | "disconnected";
-
-const statusStyles: Record<Status, string> = {
-  connected: "bg-soft-black",
-  pending: "bg-fog",
-  disconnected: "bg-red-400",
+const leadStatusStyles: Record<LeadStatus, string> = {
+  new: "border-soft-black bg-soft-black text-pure",
+  contacted: "border-cloud bg-warm-white text-stone-gray",
+  qualified: "border-cloud bg-warm-white text-stone-gray",
 };
 
-const statusLabels: Record<Status, string> = {
-  connected: "Connected",
-  pending: "Pending setup",
-  disconnected: "Not connected",
-};
-
-export function StatusBadge({ status }: { status: Status }) {
+export function LeadStatusPill({ status }: { status: LeadStatus }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-cloud bg-warm-white px-2.5 py-1 text-xs text-stone-gray">
-      <span className={cn("h-1.5 w-1.5 rounded-full", statusStyles[status])} />
-      {statusLabels[status]}
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wide",
+        leadStatusStyles[status]
+      )}
+    >
+      {LEAD_STATUS_LABEL[status]}
     </span>
   );
 }
 
-export function ModuleCard({
-  title,
-  description,
-  status,
-  action,
-  children,
+export function StatCard({
+  label,
+  value,
+  hint,
 }: {
-  title: string;
-  description: string;
-  status: Status;
-  action?: React.ReactNode;
-  children?: React.ReactNode;
+  label: string;
+  value: string;
+  hint?: string;
 }) {
   return (
-    <div className="rounded-xl border border-cloud bg-pure p-5">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-sm font-medium text-soft-black">{title}</h3>
-          <p className="mt-1 text-xs leading-relaxed text-zen-accent">{description}</p>
-        </div>
-        <StatusBadge status={status} />
-      </div>
-      {action && <div className="mt-4">{action}</div>}
-      {children && <div className="mt-4">{children}</div>}
-    </div>
-  );
-}
-
-export function PlaceholderPanel({ label }: { label?: string }) {
-  return (
-    <div className="flex h-32 items-center justify-center rounded-lg border border-dashed border-cloud bg-warm-white">
-      <p className="text-xs text-fog">{label ?? "Connect data source to populate"}</p>
+    <div className="rounded-xl border border-cloud bg-pure px-5 py-4">
+      <p className="label">{label}</p>
+      <p className="mt-2 text-lg font-light text-soft-black">{value}</p>
+      {hint && <p className="mt-0.5 text-xs text-fog">{hint}</p>}
     </div>
   );
 }

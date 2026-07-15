@@ -7,7 +7,6 @@ const envSchema = z.object({
   DATABASE_URL: z.string().optional(),
   PAYLOAD_SECRET: z.string().optional(),
   NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
-  DASHBOARD_ACCESS_KEY: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;
@@ -17,7 +16,6 @@ export const env: Env = envSchema.parse({
   DATABASE_URL: process.env.DATABASE_URL,
   PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-  DASHBOARD_ACCESS_KEY: process.env.DASHBOARD_ACCESS_KEY,
 });
 
 export function assertProductionEnv() {

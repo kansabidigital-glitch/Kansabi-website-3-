@@ -9,6 +9,9 @@
   --fog: #a1a1aa;
   --zen-accent: #71717a;
   --pure: #ffffff;
+  /* Brand accents — used sparingly: copper for CTA emphasis/hovers, teal for the GEO/AI layer */
+  --accent: #b45309;
+  --accent-2: #0f766e;
 }
 
 @theme inline {
@@ -20,6 +23,8 @@
   --color-fog: var(--fog);
   --color-zen-accent: var(--zen-accent);
   --color-pure: var(--pure);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
 
   --font-sans: var(--font-inter);
 
