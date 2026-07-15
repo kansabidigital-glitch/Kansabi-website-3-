@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import { PageStub } from "@/components/layout/page-stub";
+import { ExpertiseCroPage } from "@/components/sections/expertise-cro-page";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/jsonld";
+import { croExpertise } from "@/data/site-content";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  serviceSchema,
+} from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Landing Page & CRO Agency | Kansabi",
@@ -20,17 +25,18 @@ export default function CroLandingPagesPage() {
               "Landing pages that are tested, measured and keep improving — conversion as a discipline, not a guess.",
             path: "/expertise/cro-landing-pages",
           }),
+          faqPageSchema(croExpertise.faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Landing Pages & CRO", path: "/expertise/cro-landing-pages" },
+            { name: "Expertise", path: "/#expertise" },
+            {
+              name: "Landing Pages & CRO",
+              path: "/expertise/cro-landing-pages",
+            },
           ]),
         ]}
       />
-      <PageStub
-        eyebrow="Expertise — Web & Experience"
-        title="Landing Pages & CRO"
-      description="Pages that convert, not just impress. We run a test-and-learn loop — audit, hypotheses, A/B tests, ship — so your landing pages get measurably better every month."
-      />
+      <ExpertiseCroPage />
     </>
   );
 }

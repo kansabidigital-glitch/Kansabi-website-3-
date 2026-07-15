@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
-import { PageStub } from "@/components/layout/page-stub";
+import { PlaybooksIndex } from "@/components/sections/playbooks-index";
+import { JsonLd } from "@/components/seo/json-ld";
+import { playbooks } from "@/data/site-content";
+import { breadcrumbSchema, itemListSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Growth Playbooks | Kansabi",
+  title: "Playbooks — How we'd approach your sector | Kansabi",
   description:
-    "Sector playbooks showing exactly how we'd run a growth engagement — sample engagements with industry benchmarks, not invented case studies.",
+    "Sector playbooks showing exactly how we'd run a growth engagement — sample engagements mapped to industry benchmarks, not invented case studies.",
+  alternates: { canonical: "/playbooks" },
 };
 
 export default function PlaybooksPage() {
   return (
-    <PageStub
-      eyebrow="Playbooks — sample engagements"
-      title="How we'd grow your business"
-      description="We don't publish invented case studies. Instead, each playbook walks through a real engagement plan for a sector — aesthetic clinics, B2B SaaS — with industry benchmarks in place of client claims. The first two playbooks land here soon."
-      ctaLabel="Talk through your sector"
-    />
+    <>
+      <JsonLd
+        schemas={[
+          itemListSchema(
+            playbooks.map((p) => ({ name: p.title, path: p.href }))
+          ),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Playbooks", path: "/playbooks" },
+          ]),
+        ]}
+      />
+      <PlaybooksIndex />
+    </>
   );
 }

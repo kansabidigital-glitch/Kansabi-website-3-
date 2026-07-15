@@ -78,6 +78,45 @@ export function serviceSchema({
   };
 }
 
+export function itemListSchema(
+  items: { name: string; path: string }[]
+): JsonLdObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: `${SITE_URL}${item.path}`,
+    })),
+  };
+}
+
+// Playbooks are illustrative sample engagements, not case studies — Article
+// (not Review/AggregateRating) keeps the schema honest: no fabricated social
+// proof. Author + publisher point at the Organization node.
+export function articleSchema({
+  name,
+  description,
+  path,
+}: {
+  name: string;
+  description: string;
+  path: string;
+}): JsonLdObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: name,
+    description,
+    url: `${SITE_URL}${path}`,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    isAccessibleForFree: true,
+  };
+}
+
 export function breadcrumbSchema(
   items: { name: string; path: string }[]
 ): JsonLdObject {

@@ -11,6 +11,8 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: "/expertise/cro-landing-pages", priority: 0.8 },
   { path: "/expertise/paid-media", priority: 0.8 },
   { path: "/playbooks", priority: 0.7 },
+  { path: "/playbooks/aesthetic-clinic", priority: 0.6 },
+  { path: "/playbooks/b2b-saas", priority: 0.6 },
   { path: "/about", priority: 0.6 },
   { path: "/contact", priority: 0.8 },
   { path: "/privacy", priority: 0.2 },

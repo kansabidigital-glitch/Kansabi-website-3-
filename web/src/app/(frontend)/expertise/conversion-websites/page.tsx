@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { PageStub } from "@/components/layout/page-stub";
+import { ExpertiseConversionPage } from "@/components/sections/expertise-conversion-page";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/jsonld";
+import { conversionExpertise } from "@/data/site-content";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  serviceSchema,
+} from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Conversion Website Agency | Kansabi",
+  title: "Conversion Website Design Agency | Kansabi",
   description:
     "Fast, measurable websites wired into your sales system — built to convert, not just to look good.",
 };
@@ -20,17 +25,18 @@ export default function ConversionWebsitesPage() {
               "Fast, measurable websites wired into your sales system — built to convert, not just to look good.",
             path: "/expertise/conversion-websites",
           }),
+          faqPageSchema(conversionExpertise.faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Conversion Websites", path: "/expertise/conversion-websites" },
+            { name: "Expertise", path: "/#expertise" },
+            {
+              name: "Conversion Websites",
+              path: "/expertise/conversion-websites",
+            },
           ]),
         ]}
       />
-      <PageStub
-        eyebrow="Expertise — Web & Experience"
-        title="Conversion Websites"
-      description="A website is not a brochure — it's the hardest-working part of your sales system. We build fast, measurable sites where every page has a job and every visit is accounted for."
-      />
+      <ExpertiseConversionPage />
     </>
   );
 }
